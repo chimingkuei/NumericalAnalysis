@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace NumericalAnalysis
 {
+    /// <summary>
+    /// Polynomial poly = new Polynomial(1, -2, 3); // 1 - 2x + 3x^2
+    /// Console.WriteLine(poly.ToString()); // "3x^2 + -2x^1 + 1"
+    /// Console.WriteLine(poly.Evaluate(2)); // 計算 x = 2 時的值
+    /// </summary>
     class Polynomial
     {
         private double[] coefficients;
