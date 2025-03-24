@@ -64,3 +64,6 @@ D:\Chimingkuei\repos\NumericalAnalysis\NumericalAnalysis\obj\x64\Debug\Numerical
 D:\Chimingkuei\repos\NumericalAnalysis\NumericalAnalysis\obj\x64\Debug\Numerica.5D6EACDE.Up2Date
 D:\Chimingkuei\repos\NumericalAnalysis\NumericalAnalysis\obj\x64\Debug\NumericalAnalysis.exe
 D:\Chimingkuei\repos\NumericalAnalysis\NumericalAnalysis\obj\x64\Debug\NumericalAnalysis.pdb
+D:\Chimingkuei\repos\NumericalAnalysis\NumericalAnalysis\bin\x64\Debug\MathNet.Numerics.dll
+D:\Chimingkuei\repos\NumericalAnalysis\NumericalAnalysis\bin\x64\Debug\MathNet.Numerics.xml
+D:\Chimingkuei\repos\NumericalAnalysis\NumericalAnalysis\bin\x64\Debug\NCalc.dll

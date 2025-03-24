@@ -1,7 +1,11 @@
-﻿using System;
+﻿using NCalc;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace NumericalAnalysis
@@ -46,5 +50,47 @@ namespace NumericalAnalysis
         }
     }
 
+    class Base
+    {
+        public double EvaluateFunction(string expression, double x)
+        {
+            try
+            {
+                var expr = new Expression(expression);  // 創建表達式對象
+                expr.Parameters["x"] = x;                // 設置 x 參數
+                return Convert.ToDouble(expr.Evaluate()); // 計算並返回結果
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"解析或計算函數失敗: {ex.Message}");
+            }
+        }
+    }
+
+    class EquationOneVariable:Base
+    {
+        public double Bisection(Func<double, double> function, double a, double b, double tolerance, int maxIterations)
+        {
+            if (function(a) * function(b) >= 0)
+            {
+                Console.WriteLine("函數值在區間端點的符號相同，無法確保存在根！");
+            }
+            double mid = 0;
+            for (int i = 0; i < maxIterations; i++)
+            {
+                mid = (a + b) / 2;
+                double fMid = function(mid);
+                if (Math.Abs(fMid) < tolerance) // 判斷是否收斂
+                    return mid;
+                if (function(a) * fMid < 0)
+                    b = mid; // 根在 [a, mid] 內
+                else
+                    a = mid; // 根在 [mid, b] 內
+            }
+            return mid; // 返回最後的近似根
+        }
+
+
+    }
 
 }

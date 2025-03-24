@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using NCalc;
 
 namespace NumericalAnalysis
 {
@@ -129,6 +130,7 @@ namespace NumericalAnalysis
             LoadConfig(0, 0);
         }
         BaseConfig<RootObject> Config = new BaseConfig<RootObject>();
+        EquationOneVariable EOV = new EquationOneVariable();
         #region Log
         BaseLogRecord Logger = new BaseLogRecord();
         //Logger.WriteLog("儲存參數!", LogLevel.General, richTextBoxGeneral);
@@ -142,7 +144,15 @@ namespace NumericalAnalysis
             {
                 case nameof(Demo):
                     {
-                       
+                        string functionInput = "Pow(x,5) - 5*x + 1";
+                        double a = -2;
+                        double b = 2;
+                        double tolerance = 1e-6;
+                        int maxIterations = 10000000;
+                        Func<double, double> function = x => EOV.EvaluateFunction(functionInput, x);
+                        // 執行二分法
+                        double root = EOV.Bisection(function, a, b, tolerance, maxIterations);
+                        Console.WriteLine($"結果: x ≈ {root:F6}");
                         break;
                     }
             }
